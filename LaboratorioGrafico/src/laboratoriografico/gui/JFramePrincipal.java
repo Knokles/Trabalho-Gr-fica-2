@@ -31,6 +31,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         canvas1 = new java.awt.Canvas();
         jPanelEsquerdo = new javax.swing.JPanel();
         jButtonDesenhar = new javax.swing.JButton();
+        jButtonApagar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 570));
@@ -60,20 +63,38 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jButtonDesenhar.setText("Desenhar");
 
+        jButtonApagar.setText("Apagar");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
         javax.swing.GroupLayout jPanelEsquerdoLayout = new javax.swing.GroupLayout(jPanelEsquerdo);
         jPanelEsquerdo.setLayout(jPanelEsquerdoLayout);
         jPanelEsquerdoLayout.setHorizontalGroup(
             jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jButtonDesenhar)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
+                        .addComponent(jButtonApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonDesenhar, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))))
         );
         jPanelEsquerdoLayout.setVerticalGroup(
             jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEsquerdoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonDesenhar))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDesenhar)
+                    .addComponent(jButtonApagar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,7 +159,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelViewPort;
     private java.awt.Canvas canvas1;
+    private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonDesenhar;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanelEsquerdo;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

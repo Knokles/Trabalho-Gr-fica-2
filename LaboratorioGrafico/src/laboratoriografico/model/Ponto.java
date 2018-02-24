@@ -4,14 +4,13 @@ package laboratoriografico.model;
  *
  * @author Dionathan
  * @since 23/02/2018
- * 
+ *
  */
+public class Ponto implements Forma {
 
-public class Ponto {
-
-    String nome;
-    double cordX;
-    double cordY;
+    private String nome;
+    private double cordX;
+    private double cordY;
 
     public Ponto() {
     }
@@ -50,6 +49,9 @@ public class Ponto {
     public void setCordY(double cordY) {
         this.cordY = cordY;
     }
-    
-    
+
+    @Override
+    public void desenha() {
+        //Implementar a função de desenho;
+    }
 }

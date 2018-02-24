@@ -6,10 +6,11 @@ package laboratoriografico.model;
  * @since 23/02/2018
  *
  */
-public class Linha {
-    String nome;
-    Ponto inicio;
-    Ponto fim;
+public class Linha implements Forma {
+
+    private String nome;
+    private Ponto inicio;
+    private Ponto fim;
 
     public Linha() {
     }
@@ -47,6 +48,11 @@ public class Linha {
 
     public void setFim(Ponto fim) {
         this.fim = fim;
+    }
+
+    @Override
+    public void desenha() {
+        //Implementar a função de desenho;
     }
 
 }
