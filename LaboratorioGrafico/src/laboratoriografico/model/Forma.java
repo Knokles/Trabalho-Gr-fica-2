@@ -5,14 +5,18 @@
  */
 package laboratoriografico.model;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Dionathan
  * @since 24/02/2018
  *
  */
-abstract interface Forma {
+public abstract class Forma {
 
-    public void desenha();
+    public void desenha(Graphics g) {
+
+    }
 
 }

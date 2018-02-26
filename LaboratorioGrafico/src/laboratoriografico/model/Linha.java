@@ -1,12 +1,14 @@
 package laboratoriografico.model;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author Dionathan
  * @since 23/02/2018
  *
  */
-public class Linha implements Forma {
+public class Linha extends Forma {
 
     private String nome;
     private Ponto inicio;
@@ -51,8 +53,12 @@ public class Linha implements Forma {
     }
 
     @Override
-    public void desenha() {
-        //Implementar a função de desenho;
+    public void desenha(Graphics g) {
+        g.drawLine((int) inicio.getCordX(), (int) inicio.getCordY(), (int) fim.getCordX(), (int) fim.getCordY());
     }
 
+    @Override
+    public String toString() {
+        return "/ " + nome + " [ (" + inicio.getCordX() + "," + inicio.getCordX() + ") (" + fim.getCordX() + "," + fim.getCordY() + " ]";
+    }
 }

@@ -1,5 +1,6 @@
 package laboratoriografico.model;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,23 +10,37 @@ import java.util.List;
  * @since 24/02/2018
  *
  */
-public class MultiLinha implements Forma {
+public class MultiLinha extends Forma {
 
-    private List<Linha> linhas;
+    private String nome;
+    private List<Ponto> arestas;
 
-    public MultiLinha(Linha linha) {
-        this.linhas = new ArrayList();
-        linhas.add(linha);
+    public MultiLinha(String nome, Ponto inicio, Ponto fim) {
+        this.arestas = new ArrayList();
+        this.nome = nome;
+        arestas.add(inicio);
+        arestas.add(fim);
     }
 
-    public void addLinha(double cordX, double cordY) {
-        Linha lastLine = linhas.get(linhas.size());
-        Linha nextLine = new Linha(lastLine.getFim(), new Ponto(cordX, cordY));
-        linhas.add(nextLine);
+    public void addAresta(Ponto ponto) {
+        arestas.add(ponto);
     }
 
     @Override
-    public void desenha() {
-        //Implementar a função de desenho;
+    public void desenha(Graphics g) {
+        for (int i = 1; i < arestas.size(); i++) {
+            Linha linha = new Linha(arestas.get(i - 1), arestas.get(i));
+            linha.desenha(g);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String retorno = "/\\/ " + nome + " [ ";
+        for (Ponto p : arestas) {
+            retorno += " (" + p.getCordX() + "," + p.getCordY() + ")";
+        }
+        retorno += "]";
+        return retorno;
     }
 }
