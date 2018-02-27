@@ -24,9 +24,9 @@ public class JDesenho extends JPanel {
     protected void paintComponent(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(0, 0, 500, 500);
-        g.setColor(Color.yellow);
-        g.drawLine(0, 250, 500, 250);
-        g.drawLine(250, 0, 250, 500);
+        //g.setColor(Color.yellow);
+        //g.drawLine(0, 250, 500, 250);
+        //g.drawLine(250, 0, 250, 500);
         g.setColor(Color.black);
         for (Forma f : formas) {
             f.desenha(g);
