@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.List;
 import javax.swing.JPanel;
 import laboratoriografico.model.Forma;
+import laboratoriografico.model.ViewPort;
 
 /**
  *
@@ -15,9 +16,19 @@ import laboratoriografico.model.Forma;
 public class JDesenho extends JPanel {
 
     List<Forma> formas;
+    ViewPort vp;
 
-    public JDesenho(List<Forma> formas) {
+    public JDesenho(List<Forma> formas, ViewPort vp) {
         this.formas = formas;
+        this.vp = vp;
+    }
+
+    public ViewPort getVp() {
+        return vp;
+    }
+
+    public void setVp(ViewPort vp) {
+        this.vp = vp;
     }
 
     @Override
@@ -29,7 +40,7 @@ public class JDesenho extends JPanel {
         //g.drawLine(250, 0, 250, 500);
         g.setColor(Color.black);
         for (Forma f : formas) {
-            f.desenha(g);
+            f.desenha(g,vp);
         }
     }
 }

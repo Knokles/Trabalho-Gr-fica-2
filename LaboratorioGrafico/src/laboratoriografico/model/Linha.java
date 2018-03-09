@@ -53,8 +53,8 @@ public class Linha extends Forma {
     }
 
     @Override
-    public void desenha(Graphics g) {
-        g.drawLine((int) inicio.getCordX(), (int) inicio.getCordY(), (int) fim.getCordX(), (int) fim.getCordY());
+    public void desenha(Graphics g, ViewPort vp) {
+        g.drawLine(vp.convertX(inicio.getCordX()), vp.convertY(inicio.getCordY()), vp.convertX(fim.getCordX()), vp.convertY(fim.getCordY()));
     }
 
     @Override

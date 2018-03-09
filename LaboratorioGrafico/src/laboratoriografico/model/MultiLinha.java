@@ -27,10 +27,10 @@ public class MultiLinha extends Forma {
     }
 
     @Override
-    public void desenha(Graphics g) {
+    public void desenha(Graphics g, ViewPort vp) {
         for (int i = 1; i < arestas.size(); i++) {
             Linha linha = new Linha(arestas.get(i - 1), arestas.get(i));
-            linha.desenha(g);
+            linha.desenha(g, vp);
         }
     }
 

@@ -53,8 +53,8 @@ public class Ponto extends Forma {
     }
 
     @Override
-    public void desenha(Graphics g) {
-        g.drawLine((int) cordX, (int) cordY, (int) cordX, (int) cordY);
+    public void desenha(Graphics g, ViewPort vp) {
+        g.drawLine(vp.convertX(cordX), vp.convertY(cordY), vp.convertX(cordX), vp.convertY(cordY));
     }
 
     @Override

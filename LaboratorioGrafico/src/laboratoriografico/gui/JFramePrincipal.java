@@ -6,7 +6,11 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import laboratoriografico.model.Forma;
+import laboratoriografico.model.Linha;
 import laboratoriografico.model.Matriz;
+import laboratoriografico.model.Mundo;
+import laboratoriografico.model.Ponto;
+import laboratoriografico.model.ViewPort;
 
 /**
  *
@@ -16,13 +20,27 @@ import laboratoriografico.model.Matriz;
  */
 public class JFramePrincipal extends javax.swing.JFrame {
 
-    List<Forma> formas;
+    private List<Forma> formas;
     private DefaultListModel lista;
+    private Mundo mundo;
+    private ViewPort vp;
 
     public JFramePrincipal() {
         formas = new ArrayList();
         lista = new DefaultListModel();
+        mundo = new Mundo(-1000.0, 1000.0, -1000.0, 1000.0);
+        vp = new ViewPort(mundo);
+
+        Linha eixoX = new Linha("Eixo X", new Ponto(-1000.0, 0.0), new Ponto(1000.0, 0.0));
+        Linha eixoY = new Linha("Eixo Y", new Ponto(0.0, -1000.0), new Ponto(0.0, 1000.0));
+        formas.add(eixoX);
+        formas.add(eixoY);
+        lista.addElement(eixoX);
+        lista.addElement(eixoY);
+        
         initComponents();
+        
+        jListFormas.setModel(lista);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,13 +48,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         JPanelViewPort = new javax.swing.JPanel();
-        panelDesenho = new laboratoriografico.gui.JDesenho(formas);
+        panelDesenho = new laboratoriografico.gui.JDesenho(formas, vp);
         jPanelEsquerdo = new javax.swing.JPanel();
         jButtonDesenhar = new javax.swing.JButton();
         jButtonApagar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFormas = new javax.swing.JList<>();
         btnMatrizes = new javax.swing.JButton();
+        btnBaixo = new javax.swing.JButton();
+        btnCima = new javax.swing.JButton();
+        btnDireita = new javax.swing.JButton();
+        btnEsquerda = new javax.swing.JButton();
+        btnZoonIn = new javax.swing.JButton();
+        btnZoonOut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 570));
@@ -99,10 +123,55 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListFormas);
 
+        btnMatrizes.setBackground(new java.awt.Color(255, 0, 0));
         btnMatrizes.setText("Teste de Matrizes");
         btnMatrizes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMatrizesActionPerformed(evt);
+            }
+        });
+
+        btnBaixo.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnBaixo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaixoActionPerformed(evt);
+            }
+        });
+
+        btnCima.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnCima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCimaActionPerformed(evt);
+            }
+        });
+
+        btnDireita.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDireitaActionPerformed(evt);
+            }
+        });
+
+        btnEsquerda.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsquerdaActionPerformed(evt);
+            }
+        });
+
+        btnZoonIn.setIcon(new javax.swing.ImageIcon("E:\\Repositorios\\Trabalho-Gr-fica-2\\LaboratorioGrafico\\imagens\\zoom-in.png")); // NOI18N
+        btnZoonIn.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnZoonIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoonInActionPerformed(evt);
+            }
+        });
+
+        btnZoonOut.setIcon(new javax.swing.ImageIcon("E:\\Repositorios\\Trabalho-Gr-fica-2\\LaboratorioGrafico\\imagens\\zoom-out.png")); // NOI18N
+        btnZoonOut.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnZoonOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoonOutActionPerformed(evt);
             }
         });
 
@@ -114,13 +183,26 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
+                    .addComponent(btnMatrizes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
                         .addComponent(jButtonApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDesenhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEsquerdoLayout.createSequentialGroup()
-                        .addComponent(btnMatrizes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jButtonDesenhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btnDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBaixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnZoonIn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnZoonOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         jPanelEsquerdoLayout.setVerticalGroup(
             jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,8 +213,24 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDesenhar)
                     .addComponent(jButtonApagar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                .addComponent(btnMatrizes))
+                .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDireita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBaixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(btnZoonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnZoonOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMatrizes)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,12 +245,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelEsquerdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(JPanelViewPort, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelEsquerdo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 11, Short.MAX_VALUE)
+                        .addComponent(JPanelViewPort, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
         );
 
@@ -227,6 +325,36 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Matriz.multiplicacao(mm1, 2.0).imprimeMatriz();
     }//GEN-LAST:event_btnMatrizesActionPerformed
 
+    private void btnZoonInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoonInActionPerformed
+        vp.setZoom(vp.getZoom() * 2);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnZoonInActionPerformed
+
+    private void btnZoonOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoonOutActionPerformed
+        vp.setZoom(vp.getZoom() / 2);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnZoonOutActionPerformed
+
+    private void btnCimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCimaActionPerformed
+        vp.setDesY(vp.getDesY() + 10);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnCimaActionPerformed
+
+    private void btnBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixoActionPerformed
+        vp.setDesY(vp.getDesY() - 10);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnBaixoActionPerformed
+
+    private void btnEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsquerdaActionPerformed
+        vp.setDesX(vp.getDesX() - 10);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnEsquerdaActionPerformed
+
+    private void btnDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireitaActionPerformed
+        vp.setDesX(vp.getDesX() + 10);
+        panelDesenho.repaint();
+    }//GEN-LAST:event_btnDireitaActionPerformed
+
     public List<Forma> getFormas() {
         return formas;
     }
@@ -269,7 +397,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelViewPort;
+    private javax.swing.JButton btnBaixo;
+    private javax.swing.JButton btnCima;
+    private javax.swing.JButton btnDireita;
+    private javax.swing.JButton btnEsquerda;
     private javax.swing.JButton btnMatrizes;
+    private javax.swing.JButton btnZoonIn;
+    private javax.swing.JButton btnZoonOut;
     private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonDesenhar;
     private javax.swing.JList<String> jListFormas;

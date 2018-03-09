@@ -15,7 +15,7 @@ import java.awt.Graphics;
  */
 public abstract class Forma {
 
-    public void desenha(Graphics g) {
+    public void desenha(Graphics g, ViewPort vp) {
 
     }
 
