@@ -6,6 +6,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import laboratoriografico.model.Forma;
+import laboratoriografico.model.Matriz;
 
 /**
  *
@@ -35,6 +36,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jButtonApagar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFormas = new javax.swing.JList<>();
+        btnMatrizes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 570));
@@ -97,6 +99,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jListFormas);
 
+        btnMatrizes.setText("Teste de Matrizes");
+        btnMatrizes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatrizesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelEsquerdoLayout = new javax.swing.GroupLayout(jPanelEsquerdo);
         jPanelEsquerdo.setLayout(jPanelEsquerdoLayout);
         jPanelEsquerdoLayout.setHorizontalGroup(
@@ -108,7 +117,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
                     .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
                         .addComponent(jButtonApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDesenhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButtonDesenhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEsquerdoLayout.createSequentialGroup()
+                        .addComponent(btnMatrizes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanelEsquerdoLayout.setVerticalGroup(
             jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +131,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDesenhar)
                     .addComponent(jButtonApagar))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addComponent(btnMatrizes))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,6 +174,58 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jListFormasComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jListFormasComponentAdded
         panelDesenho.repaint();
     }//GEN-LAST:event_jListFormasComponentAdded
+
+    private void btnMatrizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatrizesActionPerformed
+        System.out.println("\n<TESTE DE MATRIZES>");
+
+        //Soma
+        System.out.println("\n<----- Soma ----->");
+
+        Matriz sm1 = new Matriz(3, 3, 4.0);
+        System.out.println("\nMatriz sm1");
+        sm1.imprimeMatriz();
+
+        System.out.println("\nMatriz sm2");
+        Matriz sm2 = Matriz.identidade(3);
+        sm2.imprimeMatriz();
+
+        System.out.println("\nMariz sm1+sm2");
+        Matriz.soma(sm1, sm2).imprimeMatriz();
+
+        System.out.println("\nMariz sm1+2(escalar)");
+        Matriz.soma(sm1, 2.0).imprimeMatriz();
+
+        //Multiplicação
+        System.out.println("\n<----- Multiplicação ----->");
+        Matriz mm1 = new Matriz(3, 2, 0.0);
+        mm1.setValor(1, 1, 2);
+        mm1.setValor(1, 2, 3);
+        mm1.setValor(2, 1, 0);
+        mm1.setValor(2, 2, 1);
+        mm1.setValor(3, 1, -1);
+        mm1.setValor(3, 2, 4);
+        System.out.println("\nMatriz mm1");
+        mm1.imprimeMatriz();
+
+        Matriz mm2 = new Matriz(2, 3, 0.0);
+        mm2.setValor(1, 1, 1);
+        mm2.setValor(1, 2, 2);
+        mm2.setValor(1, 3, 3);
+        mm2.setValor(2, 1, -2);
+        mm2.setValor(2, 2, 0);
+        mm2.setValor(2, 3, 4);
+        System.out.println("\nMatriz mm2");
+        mm2.imprimeMatriz();
+
+        System.out.println("\nMatriz mm1 x mm2");
+        Matriz.multiplicacao(mm1, mm2).imprimeMatriz();
+
+        System.out.println("\nMatriz mm2 x mm1");
+        Matriz.multiplicacao(mm2, mm1).imprimeMatriz();
+
+        System.out.println("\nMatriz mm1 x 2(escalar)");
+        Matriz.multiplicacao(mm1, 2.0).imprimeMatriz();
+    }//GEN-LAST:event_btnMatrizesActionPerformed
 
     public List<Forma> getFormas() {
         return formas;
@@ -204,6 +269,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelViewPort;
+    private javax.swing.JButton btnMatrizes;
     private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonDesenhar;
     private javax.swing.JList<String> jListFormas;
