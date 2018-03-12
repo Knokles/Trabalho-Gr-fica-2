@@ -10,11 +10,11 @@ public class ViewPort {
     private int zoom;
     private int desX;
     private int desY;
-    private Mundo mundo;
     private double Xvpmin;
     private double Xvpmax;
     private double Yvpmin;
     private double Yvpmax;
+    private final Mundo mundo;
 
     public ViewPort(Mundo mundo) {
         zoom = 1;

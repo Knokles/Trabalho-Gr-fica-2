@@ -1,5 +1,6 @@
 package laboratoriografico.model;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -13,19 +14,22 @@ public class Ponto extends Forma {
     private String nome;
     private double cordX;
     private double cordY;
+    private Color cor;
 
     public Ponto() {
     }
 
-    public Ponto(double cordX, double cordY) {
+    public Ponto(double cordX, double cordY, Color cor) {
         this.cordX = cordX;
         this.cordY = cordY;
+        this.cor = cor;
     }
 
-    public Ponto(String nome, double cordX, double cordY) {
+    public Ponto(String nome, double cordX, double cordY, Color cor) {
         this.nome = nome;
         this.cordX = cordX;
         this.cordY = cordY;
+        this.cor = cor;
     }
 
     public String getNome() {
@@ -54,6 +58,7 @@ public class Ponto extends Forma {
 
     @Override
     public void desenha(Graphics g, ViewPort vp) {
+        g.setColor(cor);
         g.drawLine(vp.convertX(cordX), vp.convertY(cordY), vp.convertX(cordX), vp.convertY(cordY));
     }
 

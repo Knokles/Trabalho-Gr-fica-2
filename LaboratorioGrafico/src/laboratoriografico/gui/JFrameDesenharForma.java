@@ -1,8 +1,10 @@
 package laboratoriografico.gui;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 import laboratoriografico.model.Linha;
 import laboratoriografico.model.MultiLinha;
 import laboratoriografico.model.Poligono;
@@ -10,29 +12,37 @@ import laboratoriografico.model.Ponto;
 
 /**
  *
- * @author Dionathan
+ * @author Dionathan Luan de Vargas
  * @since 26/02/2018
  *
  */
-public class JFrameDesenhar extends javax.swing.JFrame {
+public class JFrameDesenharForma extends javax.swing.JFrame {
 
     private JFramePrincipal frmPai = null;
     private List<Ponto> pontosMultiLinha;
     private List<Ponto> pontosPoligono;
     private DefaultListModel listaMultiLinha;
     private DefaultListModel listaPoligono;
+    private Color corPonto;
+    private Color corLinha;
+    private Color corMultiLinha;
+    private Color corPoligono;
 
     /**
      * Creates new form JFrameDesenhar
      *
      * @param frmPai
      */
-    public JFrameDesenhar(JFramePrincipal frmPai) {
+    public JFrameDesenharForma(JFramePrincipal frmPai) {
         this.frmPai = frmPai;
         pontosMultiLinha = new ArrayList();
         pontosPoligono = new ArrayList();
         listaMultiLinha = new DefaultListModel();
         listaPoligono = new DefaultListModel();
+        corPonto = Color.BLACK;
+        corLinha = Color.BLACK;
+        corMultiLinha = Color.BLACK;
+        corPoligono = Color.BLACK;
         initComponents();
     }
 
@@ -52,6 +62,8 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         jPanelPontoCoordenadaY = new javax.swing.JPanel();
         jLabelPontoCoordenadaY = new javax.swing.JLabel();
         jTextFieldPontoCoordenadaY = new javax.swing.JTextField();
+        btnPontoCor = new javax.swing.JButton();
+        jPanelPontoCor = new javax.swing.JPanel();
         jPanelLinha = new javax.swing.JPanel();
         jLabelLinhaNome = new javax.swing.JLabel();
         jTextFieldLinhaNome = new javax.swing.JTextField();
@@ -69,6 +81,8 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         jPanelLinhaInicialCoordenadaY = new javax.swing.JPanel();
         jLabelLinhaIncialCoordenadaY = new javax.swing.JLabel();
         jTextFieldLinhaInicialCoordenadaY = new javax.swing.JTextField();
+        btnLinhaCor = new javax.swing.JButton();
+        jPanelLinhaCor = new javax.swing.JPanel();
         jPanelMultiLinha = new javax.swing.JPanel();
         jPanelMultilinhaInserirAresta = new javax.swing.JPanel();
         jTextFieldMultiLinhaCoordenadaX = new javax.swing.JTextField();
@@ -79,8 +93,11 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         jPanelMultiLinhaArestas = new javax.swing.JPanel();
         jScrollPaneMultiLinhaArestas = new javax.swing.JScrollPane();
         jListMultiLinhaArestas = new javax.swing.JList<>();
+        btnRemoverMultilinha = new javax.swing.JButton();
         jLabelMultiLinhaNome = new javax.swing.JLabel();
         jTextFieldMultiLinhaNome = new javax.swing.JTextField();
+        btnMultilinhaCor = new javax.swing.JButton();
+        jPanelMultilinhaCor = new javax.swing.JPanel();
         jPanelPoligono = new javax.swing.JPanel();
         jPanelPoligonoInserirAresta = new javax.swing.JPanel();
         jTextFieldPoligonoCoordenadaX = new javax.swing.JTextField();
@@ -91,8 +108,11 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         jPanelPoligonoArestas = new javax.swing.JPanel();
         jScrollPanePoligonoArestas = new javax.swing.JScrollPane();
         jListPoligonoArestas = new javax.swing.JList<>();
+        btnRemoverPoligono = new javax.swing.JButton();
         jLabePoligonoNome = new javax.swing.JLabel();
         jTextFieldPoligonoNome = new javax.swing.JTextField();
+        btnPoligonoCor = new javax.swing.JButton();
+        jPanelPoligonoCor = new javax.swing.JPanel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonDesenhar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -184,6 +204,27 @@ public class JFrameDesenhar extends javax.swing.JFrame {
             .addComponent(jPanelPontoCoordenadaY, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
+        btnPontoCor.setText("Cor");
+        btnPontoCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPontoCorActionPerformed(evt);
+            }
+        });
+
+        jPanelPontoCor.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelPontoCor.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        javax.swing.GroupLayout jPanelPontoCorLayout = new javax.swing.GroupLayout(jPanelPontoCor);
+        jPanelPontoCor.setLayout(jPanelPontoCorLayout);
+        jPanelPontoCorLayout.setHorizontalGroup(
+            jPanelPontoCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
+        jPanelPontoCorLayout.setVerticalGroup(
+            jPanelPontoCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanelPontoLayout = new javax.swing.GroupLayout(jPanelPonto);
         jPanelPonto.setLayout(jPanelPontoLayout);
         jPanelPontoLayout.setHorizontalGroup(
@@ -195,17 +236,24 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                     .addGroup(jPanelPontoLayout.createSequentialGroup()
                         .addComponent(jLabelPontoNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldPontoNome)))
+                        .addComponent(jTextFieldPontoNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPontoCor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelPontoCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelPontoLayout.setVerticalGroup(
             jPanelPontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPontoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelPontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPontoNome)
-                    .addComponent(jTextFieldPontoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanelPontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPontoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelPontoNome)
+                        .addComponent(jTextFieldPontoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPontoCor)
+                    .addComponent(jPanelPontoCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanelPontoCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
         );
@@ -344,6 +392,27 @@ public class JFrameDesenhar extends javax.swing.JFrame {
             .addComponent(jPanelLinhaInicialCoordenadaY, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
+        btnLinhaCor.setText("Cor");
+        btnLinhaCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLinhaCorActionPerformed(evt);
+            }
+        });
+
+        jPanelLinhaCor.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelLinhaCor.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        javax.swing.GroupLayout jPanelLinhaCorLayout = new javax.swing.GroupLayout(jPanelLinhaCor);
+        jPanelLinhaCor.setLayout(jPanelLinhaCorLayout);
+        jPanelLinhaCorLayout.setHorizontalGroup(
+            jPanelLinhaCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
+        jPanelLinhaCorLayout.setVerticalGroup(
+            jPanelLinhaCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanelLinhaLayout = new javax.swing.GroupLayout(jPanelLinha);
         jPanelLinha.setLayout(jPanelLinhaLayout);
         jPanelLinhaLayout.setHorizontalGroup(
@@ -354,23 +423,30 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                     .addGroup(jPanelLinhaLayout.createSequentialGroup()
                         .addComponent(jLabelLinhaNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldLinhaNome, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
-                    .addComponent(jPanelLinhaInicialCoordenadas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelLinhaInicialCoordenadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextFieldLinhaNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLinhaCor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelLinhaCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelLinhaInicialCoordenadas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLinhaInicialCoordenadas1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelLinhaLayout.setVerticalGroup(
             jPanelLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLinhaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLinhaNome)
-                    .addComponent(jTextFieldLinhaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanelLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelLinhaNome)
+                        .addComponent(jTextFieldLinhaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLinhaCor))
+                    .addComponent(jPanelLinhaCor, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelLinhaInicialCoordenadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelLinhaInicialCoordenadas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPaneFormas.addTab("Linha", jPanelLinha);
@@ -420,7 +496,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                 .addGroup(jPanelMultilinhaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldMultiLinhaCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelMultiLinhaFinalCoordenadaY))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButtonMultiLinhaAdicionarAresta)
                 .addContainerGap())
         );
@@ -429,23 +505,55 @@ public class JFrameDesenhar extends javax.swing.JFrame {
 
         jScrollPaneMultiLinhaArestas.setViewportView(jListMultiLinhaArestas);
 
+        btnRemoverMultilinha.setText("Remover");
+        btnRemoverMultilinha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverMultilinhaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelMultiLinhaArestasLayout = new javax.swing.GroupLayout(jPanelMultiLinhaArestas);
         jPanelMultiLinhaArestas.setLayout(jPanelMultiLinhaArestasLayout);
         jPanelMultiLinhaArestasLayout.setHorizontalGroup(
             jPanelMultiLinhaArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMultiLinhaArestasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneMultiLinhaArestas, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addGroup(jPanelMultiLinhaArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneMultiLinhaArestas, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(btnRemoverMultilinha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelMultiLinhaArestasLayout.setVerticalGroup(
             jPanelMultiLinhaArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMultiLinhaArestasLayout.createSequentialGroup()
-                .addComponent(jScrollPaneMultiLinhaArestas)
-                .addContainerGap())
+                .addComponent(jScrollPaneMultiLinhaArestas, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoverMultilinha)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabelMultiLinhaNome.setText("Nome:");
+
+        btnMultilinhaCor.setText("Cor");
+        btnMultilinhaCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultilinhaCorActionPerformed(evt);
+            }
+        });
+
+        jPanelMultilinhaCor.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelMultilinhaCor.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        javax.swing.GroupLayout jPanelMultilinhaCorLayout = new javax.swing.GroupLayout(jPanelMultilinhaCor);
+        jPanelMultilinhaCor.setLayout(jPanelMultilinhaCorLayout);
+        jPanelMultilinhaCorLayout.setHorizontalGroup(
+            jPanelMultilinhaCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
+        jPanelMultilinhaCorLayout.setVerticalGroup(
+            jPanelMultilinhaCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanelMultiLinhaLayout = new javax.swing.GroupLayout(jPanelMultiLinha);
         jPanelMultiLinha.setLayout(jPanelMultiLinhaLayout);
@@ -461,16 +569,23 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultiLinhaLayout.createSequentialGroup()
                         .addComponent(jLabelMultiLinhaNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldMultiLinhaNome)))
+                        .addComponent(jTextFieldMultiLinhaNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMultilinhaCor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelMultilinhaCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelMultiLinhaLayout.setVerticalGroup(
             jPanelMultiLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMultiLinhaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelMultiLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMultiLinhaNome)
-                    .addComponent(jTextFieldMultiLinhaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelMultiLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMultiLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelMultiLinhaNome)
+                        .addComponent(jTextFieldMultiLinhaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMultilinhaCor)
+                    .addComponent(jPanelMultilinhaCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelMultiLinhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelMultiLinhaArestas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -498,20 +613,17 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         jPanelPoligonoInserirArestaLayout.setHorizontalGroup(
             jPanelPoligonoInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPoligonoInserirArestaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelPoligonoInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPoligonoInserirArestaLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPoligonoInserirArestaLayout.createSequentialGroup()
                         .addComponent(jLabelPoligonoFinalCoordenadaX1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jTextFieldPoligonoCoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPoligonoInserirArestaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelPoligonoInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPoligonoInserirArestaLayout.createSequentialGroup()
-                                .addComponent(jLabelPoligonoFinalCoordenadaY1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldPoligonoCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButtonPoligonoAdicionarAresta, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(jLabelPoligonoFinalCoordenadaY1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldPoligonoCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonPoligonoAdicionarAresta, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanelPoligonoInserirArestaLayout.setVerticalGroup(
@@ -525,7 +637,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                 .addGroup(jPanelPoligonoInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldPoligonoCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPoligonoFinalCoordenadaY1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButtonPoligonoAdicionarAresta)
                 .addContainerGap())
         );
@@ -534,23 +646,55 @@ public class JFrameDesenhar extends javax.swing.JFrame {
 
         jScrollPanePoligonoArestas.setViewportView(jListPoligonoArestas);
 
+        btnRemoverPoligono.setText("Remover");
+        btnRemoverPoligono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverPoligonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPoligonoArestasLayout = new javax.swing.GroupLayout(jPanelPoligonoArestas);
         jPanelPoligonoArestas.setLayout(jPanelPoligonoArestasLayout);
         jPanelPoligonoArestasLayout.setHorizontalGroup(
             jPanelPoligonoArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPoligonoArestasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPanePoligonoArestas, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addGroup(jPanelPoligonoArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPanePoligonoArestas, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(btnRemoverPoligono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelPoligonoArestasLayout.setVerticalGroup(
             jPanelPoligonoArestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPoligonoArestasLayout.createSequentialGroup()
-                .addComponent(jScrollPanePoligonoArestas)
-                .addContainerGap())
+                .addComponent(jScrollPanePoligonoArestas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoverPoligono)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabePoligonoNome.setText("Nome:");
+
+        btnPoligonoCor.setText("Cor");
+        btnPoligonoCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoligonoCorActionPerformed(evt);
+            }
+        });
+
+        jPanelPoligonoCor.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelPoligonoCor.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        javax.swing.GroupLayout jPanelPoligonoCorLayout = new javax.swing.GroupLayout(jPanelPoligonoCor);
+        jPanelPoligonoCor.setLayout(jPanelPoligonoCorLayout);
+        jPanelPoligonoCorLayout.setHorizontalGroup(
+            jPanelPoligonoCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
+        jPanelPoligonoCorLayout.setVerticalGroup(
+            jPanelPoligonoCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 23, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanelPoligonoLayout = new javax.swing.GroupLayout(jPanelPoligono);
         jPanelPoligono.setLayout(jPanelPoligonoLayout);
@@ -566,16 +710,23 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPoligonoLayout.createSequentialGroup()
                         .addComponent(jLabePoligonoNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldPoligonoNome)))
+                        .addComponent(jTextFieldPoligonoNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPoligonoCor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanelPoligonoCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelPoligonoLayout.setVerticalGroup(
             jPanelPoligonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPoligonoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPoligonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabePoligonoNome)
-                    .addComponent(jTextFieldPoligonoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelPoligonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPoligonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabePoligonoNome)
+                        .addComponent(jTextFieldPoligonoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPoligonoCor)
+                    .addComponent(jPanelPoligonoCor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelPoligonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelPoligonoArestas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -626,7 +777,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneFormas)
+            .addComponent(jTabbedPaneFormas, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -657,7 +808,8 @@ public class JFrameDesenhar extends javax.swing.JFrame {
             case 0: //Ponto
                 Ponto ponto = new Ponto(jTextFieldPontoNome.getText(),
                         Double.parseDouble(jTextFieldPontoCoordenadaX.getText().replace(",", ".")),
-                        Double.parseDouble(jTextFieldPontoCoordenadaY.getText().replace(",", ".")));
+                        Double.parseDouble(jTextFieldPontoCoordenadaY.getText().replace(",", ".")),
+                        corPonto);
                 frmPai.getFormas().add(ponto);
                 frmPai.getPanelDesenho().repaint();
                 frmPai.getLista().addElement(ponto);
@@ -667,9 +819,12 @@ public class JFrameDesenhar extends javax.swing.JFrame {
             case 1: //Linha
                 Linha linha = new Linha(jTextFieldLinhaNome.getText(),
                         new Ponto(Double.parseDouble(jTextFieldLinhaInicialCoordenadaX.getText().replace(",", ".")),
-                                Double.parseDouble(jTextFieldLinhaInicialCoordenadaY.getText().replace(",", "."))),
+                                Double.parseDouble(jTextFieldLinhaInicialCoordenadaY.getText().replace(",", ".")),
+                                corLinha),
                         new Ponto(Double.parseDouble(jTextFieldLinhaFinalCoordenadaX.getText().replace(",", ".")),
-                                Double.parseDouble(jTextFieldLinhaFinalCoordenadaY.getText().replace(",", "."))));
+                                Double.parseDouble(jTextFieldLinhaFinalCoordenadaY.getText().replace(",", ".")),
+                                corLinha),
+                        corLinha);
                 frmPai.getFormas().add(linha);
                 frmPai.getPanelDesenho().repaint();
                 frmPai.getLista().addElement(linha);
@@ -677,7 +832,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                 close();
                 break;
             case 2: ////Multilinha
-                MultiLinha multilinha = new MultiLinha(jTextFieldMultiLinhaNome.getText(), pontosMultiLinha.get(0), pontosMultiLinha.get(1));
+                MultiLinha multilinha = new MultiLinha(jTextFieldMultiLinhaNome.getText(), pontosMultiLinha.get(0), pontosMultiLinha.get(1), corMultiLinha);
                 for (int i = 2; i < pontosMultiLinha.size(); i++) {
                     multilinha.addAresta(pontosMultiLinha.get(i));
                 }
@@ -688,7 +843,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
                 close();
                 break;
             case 3:
-                Poligono poligono = new Poligono(jTextFieldPoligonoNome.getText(), pontosPoligono.get(0), pontosPoligono.get(1));
+                Poligono poligono = new Poligono(jTextFieldPoligonoNome.getText(), pontosPoligono.get(0), pontosPoligono.get(1), corPoligono);
                 for (int i = 2; i < pontosPoligono.size(); i++) {
                     poligono.addAresta(pontosPoligono.get(i));
                 }
@@ -707,7 +862,8 @@ public class JFrameDesenhar extends javax.swing.JFrame {
     private void jButtonMultiLinhaAdicionarArestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiLinhaAdicionarArestaActionPerformed
         Ponto ponto = new Ponto("",
                 Double.parseDouble(jTextFieldMultiLinhaCoordenadaX.getText().replace(",", ".")),
-                Double.parseDouble(jTextFieldMultiLinhaCoordenadaY.getText().replace(",", ".")));
+                Double.parseDouble(jTextFieldMultiLinhaCoordenadaY.getText().replace(",", ".")),
+                Color.BLACK);
         pontosMultiLinha.add(ponto);
         listaMultiLinha.addElement(ponto);
         jListMultiLinhaArestas.setModel(listaMultiLinha);
@@ -718,13 +874,114 @@ public class JFrameDesenhar extends javax.swing.JFrame {
     private void jButtonPoligonoAdicionarArestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPoligonoAdicionarArestaActionPerformed
         Ponto ponto = new Ponto("",
                 Double.parseDouble(jTextFieldPoligonoCoordenadaX.getText().replace(",", ".")),
-                Double.parseDouble(jTextFieldPoligonoCoordenadaY.getText().replace(",", ".")));
+                Double.parseDouble(jTextFieldPoligonoCoordenadaY.getText().replace(",", ".")),
+                Color.BLACK);
         pontosPoligono.add(ponto);
         listaPoligono.addElement(ponto);
         jListPoligonoArestas.setModel(listaPoligono);
         jTextFieldPoligonoCoordenadaX.setText("");
         jTextFieldPoligonoCoordenadaY.setText("");
     }//GEN-LAST:event_jButtonPoligonoAdicionarArestaActionPerformed
+
+    private void btnRemoverMultilinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMultilinhaActionPerformed
+        pontosMultiLinha.remove(jListMultiLinhaArestas.getSelectedIndex());
+        listaMultiLinha.remove(jListMultiLinhaArestas.getSelectedIndex());
+    }//GEN-LAST:event_btnRemoverMultilinhaActionPerformed
+
+    private void btnRemoverPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverPoligonoActionPerformed
+        pontosPoligono.remove(jListPoligonoArestas.getSelectedIndex());
+        listaPoligono.remove(jListPoligonoArestas.getSelectedIndex());
+    }//GEN-LAST:event_btnRemoverPoligonoActionPerformed
+
+    private void btnLinhaCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinhaCorActionPerformed
+        JFrameCor cor = new JFrameCor(this, jTabbedPaneFormas.getSelectedIndex(), corLinha);
+        this.setEnabled(false);
+        cor.setVisible(true);
+    }//GEN-LAST:event_btnLinhaCorActionPerformed
+
+    private void btnPontoCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPontoCorActionPerformed
+        JFrameCor cor = new JFrameCor(this, jTabbedPaneFormas.getSelectedIndex(), corPonto);
+        this.setEnabled(false);
+        cor.setVisible(true);
+    }//GEN-LAST:event_btnPontoCorActionPerformed
+
+    private void btnMultilinhaCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultilinhaCorActionPerformed
+        JFrameCor cor = new JFrameCor(this, jTabbedPaneFormas.getSelectedIndex(), corMultiLinha);
+        this.setEnabled(false);
+        cor.setVisible(true);
+    }//GEN-LAST:event_btnMultilinhaCorActionPerformed
+
+    private void btnPoligonoCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoligonoCorActionPerformed
+        JFrameCor cor = new JFrameCor(this, jTabbedPaneFormas.getSelectedIndex(), corPoligono);
+        this.setEnabled(false);
+        cor.setVisible(true);
+    }//GEN-LAST:event_btnPoligonoCorActionPerformed
+
+    public JPanel getjPanelLinhaCor() {
+        return jPanelLinhaCor;
+    }
+
+    public void setjPanelLinhaCor(JPanel jPanelLinhaCor) {
+        this.jPanelLinhaCor = jPanelLinhaCor;
+    }
+
+    public JPanel getjPanelMultilinhaCor() {
+        return jPanelMultilinhaCor;
+    }
+
+    public void setjPanelMultilinhaCor(JPanel jPanelMultilinhaCor) {
+        this.jPanelMultilinhaCor = jPanelMultilinhaCor;
+    }
+
+    public JPanel getjPanelPoligonoCor() {
+        return jPanelPoligonoCor;
+    }
+
+    public void setjPanelPoligonoCor(JPanel jPanelPoligonoCor) {
+        this.jPanelPoligonoCor = jPanelPoligonoCor;
+    }
+
+    public JPanel getjPanelPontoCor() {
+        return jPanelPontoCor;
+    }
+
+    public void setjPanelPontoCor(JPanel jPanelPontoCor) {
+        this.jPanelPontoCor = jPanelPontoCor;
+    }
+
+    
+    
+    public Color getCorPonto() {
+        return corPonto;
+    }
+
+    public void setCorPonto(Color corPonto) {
+        this.corPonto = corPonto;
+    }
+
+    public Color getCorLinha() {
+        return corLinha;
+    }
+
+    public void setCorLinha(Color corLinha) {
+        this.corLinha = corLinha;
+    }
+
+    public Color getCorMultiLinha() {
+        return corMultiLinha;
+    }
+
+    public void setCorMultiLinha(Color corMultiLinha) {
+        this.corMultiLinha = corMultiLinha;
+    }
+
+    public Color getCorPoligono() {
+        return corPoligono;
+    }
+
+    public void setCorPoligono(Color corPoligono) {
+        this.corPoligono = corPoligono;
+    }
 
     private void close() {
         if (frmPai != null) {
@@ -734,6 +991,12 @@ public class JFrameDesenhar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLinhaCor;
+    private javax.swing.JButton btnMultilinhaCor;
+    private javax.swing.JButton btnPoligonoCor;
+    private javax.swing.JButton btnPontoCor;
+    private javax.swing.JButton btnRemoverMultilinha;
+    private javax.swing.JButton btnRemoverPoligono;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonDesenhar;
     private javax.swing.JButton jButtonMultiLinhaAdicionarAresta;
@@ -757,6 +1020,7 @@ public class JFrameDesenhar extends javax.swing.JFrame {
     private javax.swing.JList<String> jListPoligonoArestas;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelLinha;
+    private javax.swing.JPanel jPanelLinhaCor;
     private javax.swing.JPanel jPanelLinhaFinalCoordenadaX;
     private javax.swing.JPanel jPanelLinhaFinalCoordenadaY;
     private javax.swing.JPanel jPanelLinhaInicialCoordenadaX;
@@ -765,14 +1029,17 @@ public class JFrameDesenhar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLinhaInicialCoordenadas1;
     private javax.swing.JPanel jPanelMultiLinha;
     private javax.swing.JPanel jPanelMultiLinhaArestas;
+    private javax.swing.JPanel jPanelMultilinhaCor;
     private javax.swing.JPanel jPanelMultilinhaInserirAresta;
     private javax.swing.JPanel jPanelPoligono;
     private javax.swing.JPanel jPanelPoligonoArestas;
+    private javax.swing.JPanel jPanelPoligonoCor;
     private javax.swing.JPanel jPanelPoligonoInserirAresta;
     private javax.swing.JPanel jPanelPonto;
     private javax.swing.JPanel jPanelPontoCoordenadaX;
     private javax.swing.JPanel jPanelPontoCoordenadaY;
     private javax.swing.JPanel jPanelPontoCoordenadas;
+    private javax.swing.JPanel jPanelPontoCor;
     private javax.swing.JScrollPane jScrollPaneMultiLinhaArestas;
     private javax.swing.JScrollPane jScrollPanePoligonoArestas;
     private javax.swing.JTabbedPane jTabbedPaneFormas;

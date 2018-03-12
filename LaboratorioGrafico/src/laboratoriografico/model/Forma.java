@@ -18,5 +18,4 @@ public abstract class Forma {
     public void desenha(Graphics g, ViewPort vp) {
 
     }
-
 }
