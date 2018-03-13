@@ -9,9 +9,8 @@ import java.awt.Graphics;
  * @since 23/02/2018
  *
  */
-public class Linha extends Forma {
+public class Linha {
 
-    private String nome;
     private Color cor;
     private Ponto inicio;
     private Ponto fim;
@@ -23,21 +22,6 @@ public class Linha extends Forma {
         this.inicio = inicio;
         this.fim = fim;
         this.cor = cor;
-    }
-
-    public Linha(String nome, Ponto inicio, Ponto fim, Color cor) {
-        this.nome = nome;
-        this.inicio = inicio;
-        this.fim = fim;
-        this.cor = cor;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Ponto getInicio() {
@@ -56,14 +40,8 @@ public class Linha extends Forma {
         this.fim = fim;
     }
 
-    @Override
     public void desenha(Graphics g, ViewPort vp) {
         g.setColor(cor);
         g.drawLine(vp.convertX(inicio.getCordX()), vp.convertY(inicio.getCordY()), vp.convertX(fim.getCordX()), vp.convertY(fim.getCordY()));
-    }
-
-    @Override
-    public String toString() {
-        return "/ " + nome + " [ (" + inicio.getCordX() + "," + inicio.getCordX() + ") (" + fim.getCordX() + "," + fim.getCordY() + " ]";
     }
 }

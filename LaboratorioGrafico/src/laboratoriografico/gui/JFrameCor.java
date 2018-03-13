@@ -16,14 +16,11 @@ import java.awt.Color;
 public class JFrameCor extends javax.swing.JFrame {
 
     JFrameDesenharForma frmPai;
-    int janela;
     Color cor;
 
-    public JFrameCor(JFrameDesenharForma frmPai, int janela, Color cor) {
+    public JFrameCor(JFrameDesenharForma frmPai, Color cor) {
         this.frmPai = frmPai;
-        this.janela = janela;
         this.cor = cor;
-        System.out.println(janela);
         initComponents();
     }
 
@@ -86,30 +83,9 @@ public class JFrameCor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        System.out.println(jColor.getColor());
         cor = jColor.getColor();
-
-        switch (janela) {
-            case 0:
-                frmPai.setCorPonto(cor);
-                frmPai.getjPanelPontoCor().setBackground(cor);
-                break;
-            case 1:
-                frmPai.setCorLinha(cor);
-                frmPai.getjPanelLinhaCor().setBackground(cor);
-                break;
-            case 2:
-                frmPai.setCorMultiLinha(cor);
-                frmPai.getjPanelMultilinhaCor().setBackground(cor);
-                break;
-            case 3:
-                frmPai.setCorPoligono(cor);
-                frmPai.getjPanelPoligonoCor().setBackground(cor);
-                break;
-            default:
-
-                break;
-        }
+        frmPai.setCorPoligono(cor);
+        frmPai.getjPanelFormaCor().setBackground(cor);
         close();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

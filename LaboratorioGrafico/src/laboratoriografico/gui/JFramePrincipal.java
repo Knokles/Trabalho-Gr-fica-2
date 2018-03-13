@@ -32,8 +32,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         mundo = new Mundo(-1000.0, 1000.0, -1000.0, 1000.0);
         vp = new ViewPort(mundo);
 
-        Linha eixoX = new Linha("Eixo X", new Ponto(-1000.0, 0.0, Color.BLUE), new Ponto(1000.0, 0.0, Color.BLUE), Color.BLUE);
-        Linha eixoY = new Linha("Eixo Y", new Ponto(0.0, -1000.0, Color.RED), new Ponto(0.0, 1000.0, Color.RED), Color.RED);
+        Forma eixoX = new Forma("Eixo X", new Ponto(-1000.0, 0.0), Color.BLUE, false);
+        eixoX.addAresta(new Ponto(1000.0, 0.0));
+        Forma eixoY = new Forma("Eixo Y", new Ponto(0.0, -1000.0), Color.RED, false);
+        eixoY.addAresta(new Ponto(0.0, 1000.0));
         formas.add(eixoX);
         formas.add(eixoY);
         lista.addElement(eixoX);
@@ -366,9 +368,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDireitaActionPerformed
 
     private void jButtonDesenhar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesenhar1ActionPerformed
-//        JFrameEditarForma editar = new JFrameEditarForma(this);
-//        this.setEnabled(false);
-//        editar.setVisible(true);
+        JFrameEditarForma editar = new JFrameEditarForma(this, formas.get(jListFormas.getSelectedIndex()));
+        this.setEnabled(false);
+        editar.setVisible(true);
     }//GEN-LAST:event_jButtonDesenhar1ActionPerformed
 
     public List<Forma> getFormas() {
