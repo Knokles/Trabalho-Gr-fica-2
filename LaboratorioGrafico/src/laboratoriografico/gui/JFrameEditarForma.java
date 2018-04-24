@@ -1,7 +1,7 @@
 package laboratoriografico.gui;
 
 import laboratoriografico.model.Forma;
-import laboratoriografico.model.Ponto;
+import laboratoriografico.model.Matriz;
 
 /**
  *
@@ -324,46 +324,65 @@ public class JFrameEditarForma extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        Matriz trans = Matriz.identidade(3);
+        Matriz nArestas = forma.getArestas();
+        nArestas.addColuna(1.0);
+
         switch (jTabbedPaneTransformadas.getSelectedIndex()) {
-            case 0:
+            case 0:     //Translação
                 double dX = Double.parseDouble(txfDx.getText().replace(",", "."));
                 double dY = Double.parseDouble(txfDy.getText().replace(",", "."));
-                for (Ponto ponto : forma.getArestas()) {
-                    ponto.setCordX(ponto.getCordX() + dX);
-                    ponto.setCordY(ponto.getCordY() + dY);
-                }
+
+                trans = Matriz.identidade(3);
+                trans.setValor(3, 1, dX);
+                trans.setValor(3, 2, dY);
+
                 break;
-            case 1:
+
+            case 1:     //Rotação
                 double alfa = Double.parseDouble(txfAngulo.getText().replace(",", "."));
 
-                for (Ponto ponto : forma.getArestas()) {
-                    double x = ponto.getCordX();
-                    double y = ponto.getCordY();
-                    ponto.setCordX((x * Math.cos(Math.PI / 180 * alfa))
-                            - (y * Math.sin(Math.PI / 180 * alfa)));
-                    ponto.setCordY((x * Math.sin(Math.PI / 180 * alfa))
-                            + (y * Math.cos(Math.PI / 180 * alfa)));
-                }
+                trans = Matriz.identidade(3);
+                trans.setValor(1, 1, Math.cos(Math.PI / 180 * alfa));
+                trans.setValor(1, 2, Math.sin(Math.PI / 180 * alfa));
+                trans.setValor(2, 1, -Math.sin(Math.PI / 180 * alfa));
+                trans.setValor(2, 2, Math.cos(Math.PI / 180 * alfa));
+
                 break;
-            case 2:
+
+            case 2:     //Escalonamento
                 double sX = Double.parseDouble(txfSx.getText().replace(",", "."));
                 double sY = Double.parseDouble(txfSy.getText().replace(",", "."));
                 if (ckbEscalonamentoOrigem.isSelected()) {
                     //Implementar para o ponto mais próximo
-                    double desX = forma.getArestas().get(0).getCordX();
-                    double desY = forma.getArestas().get(0).getCordY();
-                    for (Ponto ponto : forma.getArestas()) {
-                        ponto.setCordX(((ponto.getCordX() - desX) * sX) + desX);
-                        ponto.setCordY(((ponto.getCordY() - desY) * sY) + desY);
-                    }
+                    double desX = forma.getArestas().getValor(1, 1);
+                    double desY = forma.getArestas().getValor(1, 2);
+
+                    trans.setValor(3, 1, -desX);
+                    trans.setValor(3, 2, -desY);
+
+                    Matriz auxTrans = Matriz.identidade(3);
+                    auxTrans.setValor(1, 1, sX);
+                    auxTrans.setValor(2, 2, sY);
+
+                    trans = Matriz.multiplicacao(trans, auxTrans);
+
+                    auxTrans = Matriz.identidade(3);
+                    auxTrans.setValor(3, 1, desX);
+                    auxTrans.setValor(3, 2, desY);
+
+                    trans = Matriz.multiplicacao(trans, auxTrans);
                 } else {
-                    for (Ponto ponto : forma.getArestas()) {
-                        ponto.setCordX(ponto.getCordX() * sX);
-                        ponto.setCordY(ponto.getCordY() * sY);
-                    }
+                    trans.setValor(1, 1, sX);
+                    trans.setValor(2, 2, sY);
                 }
                 break;
         }
+
+        nArestas = Matriz.multiplicacao(nArestas, trans);
+        nArestas.remColuna(3);
+        forma.setArestas(nArestas);
+
         frmPai.getPanelDesenho().repaint();
         frmPai.getjListFormas().repaint();
         close();
@@ -372,6 +391,7 @@ public class JFrameEditarForma extends javax.swing.JFrame {
     private void close() {
         if (frmPai != null) {
             frmPai.setEnabled(true);
+            frmPai.limpaSelecao();
         }
         dispose();
     }

@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package laboratoriografico.model;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -19,16 +12,17 @@ import java.util.List;
 public class Forma {
 
     private String nome;
-    private List<Ponto> arestas;
+    private Matriz arestas;
     private Color cor;
     boolean poligono;
 
     public Forma(String nome, Ponto ponto, Color cor, boolean poligono) {
-        arestas = new ArrayList<>();
+        arestas = new Matriz(1, 2, 0.0);
 
         this.nome = nome;
         this.cor = cor;
-        this.arestas.add(ponto);
+        this.arestas.setValor(1, 1, ponto.getCordX());
+        this.arestas.setValor(1, 2, ponto.getCordY());
         this.poligono = poligono;
     }
 
@@ -40,11 +34,11 @@ public class Forma {
         this.nome = nome;
     }
 
-    public List<Ponto> getArestas() {
+    public Matriz getArestas() {
         return arestas;
     }
 
-    public void setArestas(List<Ponto> arestas) {
+    public void setArestas(Matriz arestas) {
         this.arestas = arestas;
     }
 
@@ -65,21 +59,28 @@ public class Forma {
     }
 
     public void addAresta(Ponto ponto) {
-        arestas.add(ponto);
+        arestas.addLinha(0.0);
+        arestas.setValor(arestas.getLinhas(), 1, ponto.getCordX());
+        arestas.setValor(arestas.getLinhas(), 2, ponto.getCordY());
     }
 
     public void desenha(Graphics g, ViewPort vp) {
-        if (arestas.size() > 1) {
-            for (int i = 1; i < arestas.size(); i++) {
-                Linha linha = new Linha(arestas.get(i - 1), arestas.get(i), cor);
+        if (arestas.getLinhas() > 1) {
+            for (int i = 1; i < arestas.getLinhas(); i++) {
+                Ponto pInicial = new Ponto(arestas.getValor(i, 1), arestas.getValor(i, 2));
+                Ponto pFinal = new Ponto(arestas.getValor(i + 1, 1), arestas.getValor(i + 1, 2));
+                Linha linha = new Linha(pInicial, pFinal, cor);
                 linha.desenha(g, vp);
             }
             if (poligono) {
-                Linha linha = new Linha(arestas.get(arestas.size() - 1), arestas.get(0), cor);
+                Ponto pInicial = new Ponto(arestas.getValor(arestas.getLinhas(), 1), arestas.getValor(arestas.getLinhas(), 2));
+                Ponto pFinal = new Ponto(arestas.getValor(1, 1), arestas.getValor(1, 2));
+                Linha linha = new Linha(pFinal, pInicial, cor);
                 linha.desenha(g, vp);
             }
         } else {
-            Linha ponto = new Linha(arestas.get(0), arestas.get(0), cor);
+            Ponto p = new Ponto(arestas.getValor(1, 1), arestas.getValor(1, 2));
+            Linha ponto = new Linha(p, p, cor);
             ponto.desenha(g, vp);
         }
     }
@@ -87,7 +88,7 @@ public class Forma {
     @Override
     public String toString() {
         String retorno = "";
-        switch (arestas.size()) {
+        switch (arestas.getLinhas()) {
             case 1:
                 retorno += ". ";
                 break;
@@ -102,11 +103,11 @@ public class Forma {
                 }
         }
         retorno += nome + " [ ";
-        for (Ponto p : arestas) {
+        for (int i = 1; i <= arestas.getLinhas(); i++) {
+            Ponto p = new Ponto(arestas.getValor(i, 1), arestas.getValor(i, 2));
             retorno += " (" + p.getCordX() + "," + p.getCordY() + ")";
         }
         retorno += "]";
         return retorno;
     }
-
 }

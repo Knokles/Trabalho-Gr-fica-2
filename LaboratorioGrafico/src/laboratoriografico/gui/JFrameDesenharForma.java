@@ -15,7 +15,7 @@ import laboratoriografico.model.Ponto;
  *
  */
 public class JFrameDesenharForma extends javax.swing.JFrame {
-    
+
     private JFramePrincipal frmPai = null;
     private List<Ponto> pontosForma;
     private DefaultListModel listaForma;
@@ -33,7 +33,7 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
         corForma = Color.BLACK;
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -330,27 +330,28 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
             ckbPoligono.setEnabled(true);
         }
     }//GEN-LAST:event_jButtonAdicionarArestaActionPerformed
-    
+
     public JPanel getjPanelFormaCor() {
         return jPanelFormaCor;
     }
-    
+
     public void setjPanelFormaCor(JPanel jPanelFormaCor) {
         this.jPanelFormaCor = jPanelFormaCor;
     }
-    
+
     public Color getCorForma() {
         return corForma;
     }
-    
+
     public void setCorPoligono(Color corForma) {
         this.corForma = corForma;
     }
-    
+
     private void close() {
         if (frmPai != null) {
             frmPai.setEnabled(true);
         }
+        frmPai.limpaSelecao();
         dispose();
     }
 

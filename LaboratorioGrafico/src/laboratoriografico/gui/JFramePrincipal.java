@@ -7,8 +7,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import laboratoriografico.model.Forma;
-import laboratoriografico.model.Linha;
-import laboratoriografico.model.Matriz;
 import laboratoriografico.model.Mundo;
 import laboratoriografico.model.Ponto;
 import laboratoriografico.model.ViewPort;
@@ -43,6 +41,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         initComponents();
 
+        jButtonApagar.setEnabled(false);
+        jButtonEditar.setEnabled(false);
         jListFormas.setModel(lista);
     }
 
@@ -57,14 +57,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jButtonApagar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFormas = new javax.swing.JList<>();
-        btnMatrizes = new javax.swing.JButton();
         btnBaixo = new javax.swing.JButton();
         btnCima = new javax.swing.JButton();
         btnDireita = new javax.swing.JButton();
         btnEsquerda = new javax.swing.JButton();
         btnZoonIn = new javax.swing.JButton();
         btnZoonOut = new javax.swing.JButton();
-        jButtonDesenhar1 = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 570));
@@ -106,6 +105,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
             .addComponent(panelDesenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanelEsquerdo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanelEsquerdoFocusGained(evt);
+            }
+        });
+
         jButtonDesenhar.setText("Desenhar");
         jButtonDesenhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,16 +131,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 jListFormasComponentAdded(evt);
             }
         });
-        jScrollPane1.setViewportView(jListFormas);
-
-        btnMatrizes.setBackground(new java.awt.Color(255, 0, 0));
-        btnMatrizes.setText("Teste de Matrizes");
-        btnMatrizes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMatrizesActionPerformed(evt);
+        jListFormas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListFormasMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(jListFormas);
 
+        btnBaixo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/baixo.png"))); // NOI18N
         btnBaixo.setPreferredSize(new java.awt.Dimension(40, 40));
         btnBaixo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +146,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnCima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/cima.png"))); // NOI18N
         btnCima.setPreferredSize(new java.awt.Dimension(40, 40));
         btnCima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +154,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnDireita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/direita.png"))); // NOI18N
         btnDireita.setPreferredSize(new java.awt.Dimension(40, 40));
         btnDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +162,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEsquerda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/esquerda.png"))); // NOI18N
         btnEsquerda.setPreferredSize(new java.awt.Dimension(40, 40));
         btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,10 +186,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonDesenhar1.setText("Editar");
-        jButtonDesenhar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDesenhar1ActionPerformed(evt);
+                jButtonEditarActionPerformed(evt);
             }
         });
 
@@ -195,11 +201,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(btnMatrizes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
                         .addComponent(jButtonApagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDesenhar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonDesenhar))))
             .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
@@ -227,7 +232,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDesenhar)
                     .addComponent(jButtonApagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDesenhar1))
+                    .addComponent(jButtonEditar))
                 .addGroup(jPanelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEsquerdoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -243,9 +248,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                         .addComponent(btnZoonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnZoonOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(btnMatrizes)
-                .addContainerGap())
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,61 +284,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jButtonApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarActionPerformed
         formas.remove(jListFormas.getSelectedIndex());
         lista.remove(jListFormas.getSelectedIndex());
+        limpaSelecao();
         panelDesenho.repaint();
     }//GEN-LAST:event_jButtonApagarActionPerformed
 
     private void jListFormasComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jListFormasComponentAdded
         panelDesenho.repaint();
     }//GEN-LAST:event_jListFormasComponentAdded
-
-    private void btnMatrizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatrizesActionPerformed
-        System.out.println("\n<TESTE DE MATRIZES>");
-
-        //Soma
-        System.out.println("\n<----- Soma ----->");
-
-        Matriz sm1 = new Matriz(3, 3, 4.0);
-        System.out.println("\nMatriz sm1");
-        sm1.imprimeMatriz();
-
-        System.out.println("\nMatriz sm2");
-        Matriz sm2 = Matriz.identidade(3);
-        sm2.imprimeMatriz();
-
-        System.out.println("\nMariz sm1+sm2");
-        Matriz.soma(sm1, sm2).imprimeMatriz();
-
-        //Multiplicação
-        System.out.println("\n<----- Multiplicação ----->");
-        Matriz mm1 = new Matriz(3, 2, 0.0);
-        mm1.setValor(1, 1, 2);
-        mm1.setValor(1, 2, 3);
-        mm1.setValor(2, 1, 0);
-        mm1.setValor(2, 2, 1);
-        mm1.setValor(3, 1, -1);
-        mm1.setValor(3, 2, 4);
-        System.out.println("\nMatriz mm1");
-        mm1.imprimeMatriz();
-
-        Matriz mm2 = new Matriz(2, 3, 0.0);
-        mm2.setValor(1, 1, 1);
-        mm2.setValor(1, 2, 2);
-        mm2.setValor(1, 3, 3);
-        mm2.setValor(2, 1, -2);
-        mm2.setValor(2, 2, 0);
-        mm2.setValor(2, 3, 4);
-        System.out.println("\nMatriz mm2");
-        mm2.imprimeMatriz();
-
-        System.out.println("\nMatriz mm1 x mm2");
-        Matriz.multiplicacao(mm1, mm2).imprimeMatriz();
-
-        System.out.println("\nMatriz mm2 x mm1");
-        Matriz.multiplicacao(mm2, mm1).imprimeMatriz();
-
-        System.out.println("\nMatriz mm1 x 2(escalar)");
-        Matriz.multiplicacao(mm1, 2.0).imprimeMatriz();
-    }//GEN-LAST:event_btnMatrizesActionPerformed
 
     private void btnZoonInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoonInActionPerformed
         vp.setZoom(vp.getZoom() * 2);
@@ -367,11 +322,24 @@ public class JFramePrincipal extends javax.swing.JFrame {
         panelDesenho.repaint();
     }//GEN-LAST:event_btnDireitaActionPerformed
 
-    private void jButtonDesenhar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesenhar1ActionPerformed
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
         JFrameEditarForma editar = new JFrameEditarForma(this, formas.get(jListFormas.getSelectedIndex()));
         this.setEnabled(false);
         editar.setVisible(true);
-    }//GEN-LAST:event_jButtonDesenhar1ActionPerformed
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jListFormasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFormasMouseClicked
+        if (jListFormas.getSelectedIndex() > 0) {
+            jButtonApagar.setEnabled(true);
+            jButtonEditar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jListFormasMouseClicked
+
+    private void jPanelEsquerdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanelEsquerdoFocusGained
+        jListFormas.setSelectedIndex(-1);
+        jButtonApagar.setEnabled(false);
+        jButtonEditar.setEnabled(false);
+    }//GEN-LAST:event_jPanelEsquerdoFocusGained
 
     public List<Forma> getFormas() {
         return formas;
@@ -405,6 +373,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jListFormas = jListFormas;
     }
 
+    public void limpaSelecao() {
+        jListFormas.setSelectedIndex(-1);
+        jButtonApagar.setEnabled(false);
+        jButtonEditar.setEnabled(false);
+    }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -419,12 +393,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCima;
     private javax.swing.JButton btnDireita;
     private javax.swing.JButton btnEsquerda;
-    private javax.swing.JButton btnMatrizes;
     private javax.swing.JButton btnZoonIn;
     private javax.swing.JButton btnZoonOut;
     private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonDesenhar;
-    private javax.swing.JButton jButtonDesenhar1;
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JList<String> jListFormas;
     private javax.swing.JPanel jPanelEsquerdo;
     private javax.swing.JScrollPane jScrollPane1;

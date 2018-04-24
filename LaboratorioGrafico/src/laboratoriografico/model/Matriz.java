@@ -59,6 +59,15 @@ public class Matriz {
         matriz.add(coluna);
     }
 
+    public void remLinha(int linha) {
+        linha--;
+        if (linha < 0 || linha > matriz.get(0).size()) {
+            throw new UnsupportedOperationException("Exclusão de linha fora do tamanho da matriz");
+        } else {
+            matriz.remove(linha);
+        }
+    }
+
     public int getColunas() {
         return matriz.get(0).size();
     }
@@ -66,6 +75,17 @@ public class Matriz {
     public void addColuna(Double valor) {
         for (int i = 0; i < matriz.size(); i++) {
             matriz.get(i).add(valor);
+        }
+    }
+
+    public void remColuna(int coluna) {
+        coluna--;
+        if (coluna < 0 || coluna > matriz.size()) {
+            throw new UnsupportedOperationException("Exclusão de coluna fora do tamanho da matriz");
+        } else {
+            for (int i = 0; i < matriz.size(); i++) {
+                matriz.get(i).remove(coluna);
+            }
         }
     }
 
