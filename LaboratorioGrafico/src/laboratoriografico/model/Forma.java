@@ -58,6 +58,22 @@ public class Forma {
         this.poligono = poligono;
     }
 
+    public double getPontoMedioX() {
+        double pontoMedioX = 0;
+        for (int i = 1; i <= arestas.getLinhas(); i++) {
+            pontoMedioX += arestas.getValor(i, 1);
+        }
+        return pontoMedioX / arestas.getLinhas();
+    }
+
+    public double getPontoMedioY() {
+        double pontoMedioY = 0;
+        for (int i = 1; i <= arestas.getLinhas(); i++) {
+            pontoMedioY += arestas.getValor(i, 2);
+        }
+        return pontoMedioY / arestas.getLinhas();
+    }
+
     public void addAresta(Ponto ponto) {
         arestas.addLinha(0.0);
         arestas.setValor(arestas.getLinhas(), 1, ponto.getCordX());

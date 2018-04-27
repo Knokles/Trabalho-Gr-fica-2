@@ -170,7 +170,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnZoonIn.setIcon(new javax.swing.ImageIcon("E:\\Repositorios\\Trabalho-Gr-fica-2\\LaboratorioGrafico\\imagens\\zoom-in.png")); // NOI18N
+        btnZoonIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/zoom-in.png"))); // NOI18N
         btnZoonIn.setPreferredSize(new java.awt.Dimension(40, 40));
         btnZoonIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnZoonOut.setIcon(new javax.swing.ImageIcon("E:\\Repositorios\\Trabalho-Gr-fica-2\\LaboratorioGrafico\\imagens\\zoom-out.png")); // NOI18N
+        btnZoonOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/laboratoriografico/imagens/zoom-out.png"))); // NOI18N
         btnZoonOut.setPreferredSize(new java.awt.Dimension(40, 40));
         btnZoonOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
