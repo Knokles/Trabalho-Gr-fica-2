@@ -43,7 +43,6 @@ public class JFrameEditarForma extends javax.swing.JFrame {
         bgEscalonar = new javax.swing.ButtonGroup();
         jTabbedPaneTransformadas = new javax.swing.JTabbedPane();
         jPanelTranslacao = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         lblDx = new javax.swing.JLabel();
         txfDx = new javax.swing.JTextField();
         txfDy = new javax.swing.JTextField();
@@ -71,6 +70,15 @@ public class JFrameEditarForma extends javax.swing.JFrame {
         jrbEscalonaSimples = new javax.swing.JRadioButton();
         jrbEscalonaOrigem = new javax.swing.JRadioButton();
         jrbEscalonaCentro = new javax.swing.JRadioButton();
+        jPanelReflexao = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jcbReflexaoX = new javax.swing.JCheckBox();
+        jcbReflexaoY = new javax.swing.JCheckBox();
+        jPanelCisalhamento = new javax.swing.JPanel();
+        lblShX = new javax.swing.JLabel();
+        txfShY = new javax.swing.JTextField();
+        txfShX = new javax.swing.JTextField();
+        lblShY = new javax.swing.JLabel();
         jPanelBotoes = new javax.swing.JPanel();
         jButtonEditar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -95,55 +103,37 @@ public class JFrameEditarForma extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Valor de Translação"));
-
         lblDx.setText("Dx");
 
         lblDy.setText("Dy");
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(lblDx)
-                    .add(lblDy))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(txfDx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                    .add(txfDy))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(lblDx)
-                    .add(txfDx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(txfDy, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(lblDy))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
 
         org.jdesktop.layout.GroupLayout jPanelTranslacaoLayout = new org.jdesktop.layout.GroupLayout(jPanelTranslacao);
         jPanelTranslacao.setLayout(jPanelTranslacaoLayout);
         jPanelTranslacaoLayout.setHorizontalGroup(
             jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelTranslacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .add(jPanelTranslacaoLayout.createSequentialGroup()
+                .add(26, 26, 26)
+                .add(jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(lblDx)
+                    .add(lblDy))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(txfDx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                    .add(txfDy))
+                .add(26, 26, 26))
         );
         jPanelTranslacaoLayout.setVerticalGroup(
             jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelTranslacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(jPanelTranslacaoLayout.createSequentialGroup()
+                .add(60, 60, 60)
+                .add(jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(lblDx)
+                    .add(txfDx, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanelTranslacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(txfDy, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(lblDy))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTabbedPaneTransformadas.addTab("Translação", jPanelTranslacao);
@@ -160,7 +150,7 @@ public class JFrameEditarForma extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txfAngulo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .add(txfAngulo)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -221,27 +211,21 @@ public class JFrameEditarForma extends javax.swing.JFrame {
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jrbRotacionarOrigem)
+                    .add(jrbRotacionarCentro)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jrbRotacionarOrigem)
-                            .add(jrbRotacionarCentro))
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(jrbRotacionarVertice)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jcbRotacionarVertice, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jPanel4Layout.createSequentialGroup()
-                                .add(jrbRotacionarVertice)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jcbRotacionarVertice, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .add(jPanel4Layout.createSequentialGroup()
-                                .add(jrbRotacionarPonto)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jtfRotacionarPontoX, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jLabel2)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jtfRotacionarPontoY, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(0, 0, Short.MAX_VALUE)))
-                        .add(10, 10, 10))))
+                        .add(jrbRotacionarPonto)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jtfRotacionarPontoX, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jtfRotacionarPontoY, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -265,13 +249,11 @@ public class JFrameEditarForma extends javax.swing.JFrame {
         jPanelRotacao.setLayout(jPanelRotacaoLayout);
         jPanelRotacaoLayout.setHorizontalGroup(
             jPanelRotacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelRotacaoLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelRotacaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanelRotacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanelRotacaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanelRotacaoLayout.createSequentialGroup()
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, Short.MAX_VALUE)))
+                    .add(jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelRotacaoLayout.setVerticalGroup(
@@ -302,7 +284,7 @@ public class JFrameEditarForma extends javax.swing.JFrame {
                     .add(lblSy))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(txfSx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .add(txfSx, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                     .add(txfSy))
                 .addContainerGap())
         );
@@ -376,6 +358,90 @@ public class JFrameEditarForma extends javax.swing.JFrame {
 
         jTabbedPaneTransformadas.addTab("Escalonamento", jPanelEscalonamento);
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Refletir"));
+
+        jcbReflexaoX.setText("Em torno do eixo X");
+
+        jcbReflexaoY.setText("Em torno do eixo Y");
+
+        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jcbReflexaoX)
+                    .add(jcbReflexaoY))
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .add(jcbReflexaoX)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jcbReflexaoY)
+                .add(0, 80, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelReflexaoLayout = new org.jdesktop.layout.GroupLayout(jPanelReflexao);
+        jPanelReflexao.setLayout(jPanelReflexaoLayout);
+        jPanelReflexaoLayout.setHorizontalGroup(
+            jPanelReflexaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelReflexaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelReflexaoLayout.setVerticalGroup(
+            jPanelReflexaoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelReflexaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPaneTransformadas.addTab("Reflexão", jPanelReflexao);
+
+        lblShX.setText("Sh X");
+
+        lblShY.setText("Sh Y");
+
+        org.jdesktop.layout.GroupLayout jPanelCisalhamentoLayout = new org.jdesktop.layout.GroupLayout(jPanelCisalhamento);
+        jPanelCisalhamento.setLayout(jPanelCisalhamentoLayout);
+        jPanelCisalhamentoLayout.setHorizontalGroup(
+            jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 436, Short.MAX_VALUE)
+            .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanelCisalhamentoLayout.createSequentialGroup()
+                    .add(26, 26, 26)
+                    .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(lblShX)
+                        .add(lblShY))
+                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                    .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(txfShX, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                        .add(txfShY))
+                    .add(26, 26, 26)))
+        );
+        jPanelCisalhamentoLayout.setVerticalGroup(
+            jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 171, Short.MAX_VALUE)
+            .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanelCisalhamentoLayout.createSequentialGroup()
+                    .add(60, 60, 60)
+                    .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(lblShX)
+                        .add(txfShX, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                    .add(jPanelCisalhamentoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(txfShY, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(lblShY))
+                    .addContainerGap(60, Short.MAX_VALUE)))
+        );
+
+        jTabbedPaneTransformadas.addTab("Cisalhamento", jPanelCisalhamento);
+
         jPanelBotoes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButtonEditar.setText("Editar");
@@ -397,7 +463,7 @@ public class JFrameEditarForma extends javax.swing.JFrame {
         jPanelBotoesLayout.setHorizontalGroup(
             jPanelBotoesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelBotoesLayout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jButtonCancelar)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(jButtonEditar)
@@ -419,11 +485,9 @@ public class JFrameEditarForma extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPaneTransformadas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanelBotoes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelBotoes, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jTabbedPaneTransformadas))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -483,13 +547,13 @@ public class JFrameEditarForma extends javax.swing.JFrame {
 
                 trans.setValor(3, 1, -pontoX);
                 trans.setValor(3, 2, -pontoY);
-                
+
                 auxTrans.setValor(1, 1, Math.cos(Math.PI / 180 * alfa));
                 auxTrans.setValor(1, 2, Math.sin(Math.PI / 180 * alfa));
                 auxTrans.setValor(2, 1, -Math.sin(Math.PI / 180 * alfa));
                 auxTrans.setValor(2, 2, Math.cos(Math.PI / 180 * alfa));
                 trans = Matriz.multiplicacao(trans, auxTrans);
-                
+
                 auxTrans = Matriz.identidade(3);
                 auxTrans.setValor(3, 1, pontoX);
                 auxTrans.setValor(3, 2, pontoY);
@@ -541,6 +605,22 @@ public class JFrameEditarForma extends javax.swing.JFrame {
                     trans = Matriz.multiplicacao(trans, auxTrans);
                 }
                 break;
+            case 3:     //Reflexão
+                if (jcbReflexaoX.isSelected()) {
+                    trans.setValor(2, 2, -1);
+                }
+                if (jcbReflexaoY.isSelected()) {
+                    trans.setValor(1, 1, -1);
+                }
+                break;
+            case 4:     //Cisalhamento
+                double shX = Double.parseDouble(txfShX.getText().replace(",", "."));
+                double shY = Double.parseDouble(txfShY.getText().replace(",", "."));
+
+                trans.setValor(1, 2, shY);
+                trans.setValor(2, 1, shX);
+
+                break;
         }
 
         nArestas = Matriz.multiplicacao(nArestas, trans);
@@ -586,16 +666,20 @@ public class JFrameEditarForma extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelBotoes;
+    private javax.swing.JPanel jPanelCisalhamento;
     private javax.swing.JPanel jPanelEscalonamento;
+    private javax.swing.JPanel jPanelReflexao;
     private javax.swing.JPanel jPanelRotacao;
     private javax.swing.JPanel jPanelTranslacao;
     private javax.swing.JTabbedPane jTabbedPaneTransformadas;
+    private javax.swing.JCheckBox jcbReflexaoX;
+    private javax.swing.JCheckBox jcbReflexaoY;
     private javax.swing.JComboBox<String> jcbRotacionarVertice;
     private javax.swing.JRadioButton jrbEscalonaCentro;
     private javax.swing.JRadioButton jrbEscalonaOrigem;
@@ -608,11 +692,15 @@ public class JFrameEditarForma extends javax.swing.JFrame {
     private javax.swing.JTextField jtfRotacionarPontoY;
     private javax.swing.JLabel lblDx;
     private javax.swing.JLabel lblDy;
+    private javax.swing.JLabel lblShX;
+    private javax.swing.JLabel lblShY;
     private javax.swing.JLabel lblSx;
     private javax.swing.JLabel lblSy;
     private javax.swing.JTextField txfAngulo;
     private javax.swing.JTextField txfDx;
     private javax.swing.JTextField txfDy;
+    private javax.swing.JTextField txfShX;
+    private javax.swing.JTextField txfShY;
     private javax.swing.JTextField txfSx;
     private javax.swing.JTextField txfSy;
     // End of variables declaration//GEN-END:variables
