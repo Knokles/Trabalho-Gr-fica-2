@@ -24,6 +24,10 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bgEscalonar">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="bgEixo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="bgReflexao">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -88,16 +92,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblDy" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDx" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDy" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDz" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txfDx" pref="361" max="32767" attributes="0"/>
-                          <Component id="txfDy" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txfDz" max="32767" attributes="0"/>
+                          <Component id="txfDx" alignment="0" pref="405" max="32767" attributes="0"/>
+                          <Component id="txfDy" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
@@ -108,15 +114,20 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDx" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txfDx" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDx" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txfDy" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDy" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txfDz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDz" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -128,12 +139,28 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txfDx">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txfDy">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDy">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Dy"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDz">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Dz"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfDz">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -152,9 +179,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jPanel4" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel3" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -163,7 +194,10 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel4" max="32767" attributes="0"/>
+                          <Component id="jPanel1" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -209,6 +243,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txfAngulo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -227,24 +264,30 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jrbRotacionarVertice" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jcbRotacionarVertice" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jrbRotacionarPonto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfRotacionarPontoX" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfRotacionarPontoY" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jtfRotacionarPontoZ" min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Component id="jrbRotacionarOrigem" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jrbRotacionarCentro" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jrbRotacionarVertice" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jcbRotacionarVertice" min="-2" pref="196" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jrbRotacionarPonto" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jtfRotacionarPontoX" min="-2" pref="73" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jtfRotacionarPontoY" min="-2" pref="73" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <EmptySpace min="76" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -265,6 +308,8 @@
                               <Component id="jtfRotacionarPontoX" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jtfRotacionarPontoY" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfRotacionarPontoZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -342,6 +387,79 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JTextField" name="jtfRotacionarPontoZ">
+                  <Properties>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Z:"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Eixo"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="rbEixoX" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbEixoY" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbEixoZ" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="rbEixoX" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rbEixoY" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rbEixoZ" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="9" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JRadioButton" name="rbEixoX">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgEixo"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Eixo X"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbEixoZ">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgEixo"/>
+                    </Property>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" value="Eixo Z"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbEixoY">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgEixo"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Eixo Y"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -373,8 +491,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -394,33 +512,37 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSx" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSy" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txfSx" pref="362" max="32767" attributes="0"/>
-                              <Component id="txfSy" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lblSx" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txfSx" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lblSy" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txfSy" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lblSz" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txfSz" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="txfSy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSy" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSz" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txfSz" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblSx" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txfSx" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblSx" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txfSx" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txfSy" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSy" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -432,12 +554,28 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txfSx">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txfSy">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblSy">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Sy"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSz">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Sz"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txfSz">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -461,7 +599,7 @@
                               <Component id="jrbEscalonaOrigem" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jrbEscalonaCentro" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="213" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -549,36 +687,54 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jcbReflexaoX" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jcbReflexaoY" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbPlanoXY" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbPlanoXZ" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbPlanoYZ" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="283" max="32767" attributes="0"/>
+                          <EmptySpace pref="311" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jcbReflexaoX" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jcbReflexaoY" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                          <Component id="rbPlanoYZ" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rbPlanoXZ" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="rbPlanoXY" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JCheckBox" name="jcbReflexaoX">
+                <Component class="javax.swing.JRadioButton" name="rbPlanoYZ">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Em torno do eixo X"/>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgReflexao"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Em torno do plano Y/Z"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jcbReflexaoY">
+                <Component class="javax.swing.JRadioButton" name="rbPlanoXZ">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Em torno do eixo Y"/>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgReflexao"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Em torno do plano X/Z"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbPlanoXY">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="bgReflexao"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Em torno do plano X/Y"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -597,58 +753,135 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="436" max="32767" attributes="0"/>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblShX" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblShY" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblShXY" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txfShXY" min="-2" pref="175" max="-2" attributes="0"/>
+                              <EmptySpace pref="42" max="32767" attributes="0"/>
+                              <Component id="lblShYX" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txfShYX" min="-2" pref="175" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txfShX" alignment="0" pref="353" max="32767" attributes="0"/>
-                              <Component id="txfShY" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblShYZ" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txfShYZ" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblShXZ" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txfShXZ" min="-2" pref="175" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblShZX" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblShZY" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txfShZX" pref="175" max="32767" attributes="0"/>
+                                  <Component id="txfShZY" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="171" max="32767" attributes="0"/>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblShX" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txfShX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txfShY" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblShY" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txfShXY" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShXY" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txfShYX" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShYX" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txfShXZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShXZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txfShZX" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShZX" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txfShYZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShYZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txfShZY" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblShZY" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblShX">
+            <Component class="javax.swing.JLabel" name="lblShYZ">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sh X"/>
+                <Property name="text" type="java.lang.String" value="Sh YZ"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txfShY">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txfShX">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblShY">
+            <Component class="javax.swing.JTextField" name="txfShXZ">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Sh Y"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfShYZ">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblShXZ">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sh XZ"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblShXY">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sh XY"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfShXY">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblShYX">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sh YX"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfShYX">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblShZY">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sh ZY"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfShZY">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblShZX">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sh ZX"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txfShZX">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -2,6 +2,7 @@ package laboratoriografico.model;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -15,14 +16,16 @@ public class Forma {
     private Matriz arestas;
     private Color cor;
     boolean poligono;
+    DecimalFormat df = new DecimalFormat("#0.00");
 
     public Forma(String nome, Ponto ponto, Color cor, boolean poligono) {
-        arestas = new Matriz(1, 2, 0.0);
+        arestas = new Matriz(1, 3, 0.0);
 
         this.nome = nome;
         this.cor = cor;
         this.arestas.setValor(1, 1, ponto.getCordX());
         this.arestas.setValor(1, 2, ponto.getCordY());
+        this.arestas.setValor(1, 3, ponto.getCordZ());
         this.poligono = poligono;
     }
 
@@ -74,28 +77,47 @@ public class Forma {
         return pontoMedioY / arestas.getLinhas();
     }
 
+    public double getPontoMedioZ() {
+        double pontoMedioZ = 0;
+        for (int i = 1; i <= arestas.getLinhas(); i++) {
+            pontoMedioZ += arestas.getValor(i, 3);
+        }
+        return pontoMedioZ / arestas.getLinhas();
+    }
+
     public void addAresta(Ponto ponto) {
         arestas.addLinha(0.0);
         arestas.setValor(arestas.getLinhas(), 1, ponto.getCordX());
         arestas.setValor(arestas.getLinhas(), 2, ponto.getCordY());
+        arestas.setValor(arestas.getLinhas(), 3, ponto.getCordZ());
     }
 
     public void desenha(Graphics g, ViewPort vp) {
         if (arestas.getLinhas() > 1) {
             for (int i = 1; i < arestas.getLinhas(); i++) {
-                Ponto pInicial = new Ponto(arestas.getValor(i, 1), arestas.getValor(i, 2));
-                Ponto pFinal = new Ponto(arestas.getValor(i + 1, 1), arestas.getValor(i + 1, 2));
+                Ponto pInicial = new Ponto(arestas.getValor(i, 1),
+                        arestas.getValor(i, 2),
+                        arestas.getValor(i, 3));
+                Ponto pFinal = new Ponto(arestas.getValor(i + 1, 1),
+                        arestas.getValor(i + 1, 2),
+                        arestas.getValor(i + 1, 3));
                 Linha linha = new Linha(pInicial, pFinal, cor);
                 linha.desenha(g, vp);
             }
             if (poligono) {
-                Ponto pInicial = new Ponto(arestas.getValor(arestas.getLinhas(), 1), arestas.getValor(arestas.getLinhas(), 2));
-                Ponto pFinal = new Ponto(arestas.getValor(1, 1), arestas.getValor(1, 2));
+                Ponto pInicial = new Ponto(arestas.getValor(arestas.getLinhas(), 1),
+                        arestas.getValor(arestas.getLinhas(), 2),
+                        arestas.getValor(arestas.getLinhas(), 3));
+                Ponto pFinal = new Ponto(arestas.getValor(1, 1),
+                        arestas.getValor(1, 2),
+                        arestas.getValor(1, 3));
                 Linha linha = new Linha(pFinal, pInicial, cor);
                 linha.desenha(g, vp);
             }
         } else {
-            Ponto p = new Ponto(arestas.getValor(1, 1), arestas.getValor(1, 2));
+            Ponto p = new Ponto(arestas.getValor(1, 1),
+                    arestas.getValor(1, 2),
+                    arestas.getValor(1, 3));
             Linha ponto = new Linha(p, p, cor);
             ponto.desenha(g, vp);
         }
@@ -120,8 +142,10 @@ public class Forma {
         }
         retorno += nome + " [ ";
         for (int i = 1; i <= arestas.getLinhas(); i++) {
-            Ponto p = new Ponto(arestas.getValor(i, 1), arestas.getValor(i, 2));
-            retorno += " (" + p.getCordX() + "," + p.getCordY() + ")";
+            Ponto p = new Ponto(arestas.getValor(i, 1),
+                    arestas.getValor(i, 2),
+                    arestas.getValor(i, 3));
+            retorno += " (" + df.format(p.getCordX()) + " ; " + df.format(p.getCordY()) + " ; " + df.format(p.getCordZ()) + ")";
         }
         retorno += "]";
         return retorno;

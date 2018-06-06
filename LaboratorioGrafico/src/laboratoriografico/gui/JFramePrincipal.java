@@ -30,14 +30,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
         mundo = new Mundo(-1000.0, 1000.0, -1000.0, 1000.0);
         vp = new ViewPort(mundo);
 
-        Forma eixoX = new Forma("Eixo X", new Ponto(-1000.0, 0.0), Color.BLUE, false);
-        eixoX.addAresta(new Ponto(1000.0, 0.0));
-        Forma eixoY = new Forma("Eixo Y", new Ponto(0.0, -1000.0), Color.RED, false);
-        eixoY.addAresta(new Ponto(0.0, 1000.0));
+        Forma eixoX = new Forma("Eixo X", new Ponto(-1000.0, 0.0, 0.0), Color.BLUE, false);
+        eixoX.addAresta(new Ponto(1000.0, 0.0, 0.0));
+        Forma eixoY = new Forma("Eixo Y", new Ponto(0.0, -1000.0, 0.0), Color.RED, false);
+        eixoY.addAresta(new Ponto(0.0, 1000.0, 0.0));
+        Forma eixoZ = new Forma("Eixo Z", new Ponto(0.0, 0.0, -1000.0), Color.GREEN, false);
+        eixoZ.addAresta(new Ponto(0.0, 0.0, 1000.0));
+        Forma casa = new Forma("Casa", new Ponto(0.0, 0.0, 0.0), Color.YELLOW, true);
+        casa.addAresta(new Ponto(300.0, 0.0, 0.0));
+        casa.addAresta(new Ponto(300.0, 300.0, 0.0));
+        casa.addAresta(new Ponto(150.0, 450.0, 0.0));
+        casa.addAresta(new Ponto(0.0, 300.0, 0.0));
         formas.add(eixoX);
         formas.add(eixoY);
+        formas.add(eixoZ);
+        formas.add(casa);
         lista.addElement(eixoX);
         lista.addElement(eixoY);
+        lista.addElement(eixoZ);
+        lista.addElement(casa);
 
         initComponents();
 

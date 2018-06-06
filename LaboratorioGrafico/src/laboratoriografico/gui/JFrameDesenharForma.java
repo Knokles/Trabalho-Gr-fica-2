@@ -23,7 +23,6 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameDesenhar
-     *
      * @param frmPai
      */
     public JFrameDesenharForma(JFramePrincipal frmPai) {
@@ -46,6 +45,8 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
         jLabelFormaFinalCoordenadaX1 = new javax.swing.JLabel();
         jLabelFormaFinalCoordenadaY1 = new javax.swing.JLabel();
         jButtonAdicionarAresta = new javax.swing.JButton();
+        jLabelFormaFinalCoordenadaY2 = new javax.swing.JLabel();
+        jTextFieldFormaCoordenadaZ = new javax.swing.JTextField();
         jPanelFormaArestas = new javax.swing.JPanel();
         jScrollPanePoligonoArestas = new javax.swing.JScrollPane();
         jListFormaArestas = new javax.swing.JList<>();
@@ -91,36 +92,50 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
             }
         });
 
+        jLabelFormaFinalCoordenadaY2.setText("Coordenada Z:");
+
         javax.swing.GroupLayout jPanelFormaInserirArestaLayout = new javax.swing.GroupLayout(jPanelFormaInserirAresta);
         jPanelFormaInserirAresta.setLayout(jPanelFormaInserirArestaLayout);
         jPanelFormaInserirArestaLayout.setHorizontalGroup(
             jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormaInserirArestaLayout.createSequentialGroup()
-                        .addComponent(jLabelFormaFinalCoordenadaX1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldFormaCoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormaInserirArestaLayout.createSequentialGroup()
-                        .addComponent(jLabelFormaFinalCoordenadaY1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldFormaCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonAdicionarAresta, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAdicionarAresta))
+                    .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
+                        .addGroup(jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
+                                .addComponent(jLabelFormaFinalCoordenadaX1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldFormaCoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
+                                .addComponent(jLabelFormaFinalCoordenadaY2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldFormaCoordenadaZ, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
+                                .addComponent(jLabelFormaFinalCoordenadaY1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldFormaCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelFormaInserirArestaLayout.setVerticalGroup(
             jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormaInserirArestaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFormaFinalCoordenadaX1)
                     .addComponent(jTextFieldFormaCoordenadaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldFormaCoordenadaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelFormaFinalCoordenadaY1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelFormaInserirArestaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldFormaCoordenadaZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFormaFinalCoordenadaY2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAdicionarAresta))
         );
 
@@ -241,7 +256,7 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
         jPanelBotoesLayout.setHorizontalGroup(
             jPanelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBotoesLayout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonDesenhar)
@@ -320,12 +335,14 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
     private void jButtonAdicionarArestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarArestaActionPerformed
         Ponto ponto = new Ponto(
                 Double.parseDouble(jTextFieldFormaCoordenadaX.getText().replace(",", ".")),
-                Double.parseDouble(jTextFieldFormaCoordenadaY.getText().replace(",", ".")));
+                Double.parseDouble(jTextFieldFormaCoordenadaY.getText().replace(",", ".")),
+                Double.parseDouble(jTextFieldFormaCoordenadaZ.getText().replace(",", ".")));
         pontosForma.add(ponto);
         listaForma.addElement(ponto);
         jListFormaArestas.setModel(listaForma);
         jTextFieldFormaCoordenadaX.setText("");
         jTextFieldFormaCoordenadaY.setText("");
+        jTextFieldFormaCoordenadaZ.setText("");
         if (listaForma.size() > 2) {
             ckbPoligono.setEnabled(true);
         }
@@ -365,6 +382,7 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabeFormaNome;
     private javax.swing.JLabel jLabelFormaFinalCoordenadaX1;
     private javax.swing.JLabel jLabelFormaFinalCoordenadaY1;
+    private javax.swing.JLabel jLabelFormaFinalCoordenadaY2;
     private javax.swing.JList<String> jListFormaArestas;
     private javax.swing.JPanel jPanelBotoes;
     private javax.swing.JPanel jPanelForma;
@@ -374,6 +392,7 @@ public class JFrameDesenharForma extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanePoligonoArestas;
     private javax.swing.JTextField jTextFieldFormaCoordenadaX;
     private javax.swing.JTextField jTextFieldFormaCoordenadaY;
+    private javax.swing.JTextField jTextFieldFormaCoordenadaZ;
     private javax.swing.JTextField jTextFieldFormaNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,13 +10,15 @@ public class Ponto {
 
     private double cordX;
     private double cordY;
+    private double cordZ;
 
     public Ponto() {
     }
 
-    public Ponto(double cordX, double cordY) {
+    public Ponto(double cordX, double cordY, double cordZ) {
         this.cordX = cordX;
         this.cordY = cordY;
+        this.cordZ = cordZ;
     }
 
     public double getCordX() {
@@ -35,9 +37,17 @@ public class Ponto {
         this.cordY = cordY;
     }
 
+    public double getCordZ() {
+        return cordZ;
+    }
+
+    public void setCordZ(double cordZ) {
+        this.cordZ = cordZ;
+    }
+
     @Override
     public String toString() {
-        return ". (" + cordX + "," + cordY + ")";
+        return ". (" + cordX + "," + cordY + "," + cordZ + ")";
     }
 
 }

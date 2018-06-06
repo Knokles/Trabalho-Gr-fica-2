@@ -9,13 +9,13 @@ import java.util.ArrayList;
  *
  */
 public class Matriz {
-
+    
     private ArrayList<ArrayList> matriz;
-
+    
     public Matriz() {
         matriz = new ArrayList<>();
     }
-
+    
     public Matriz(int linhas, int colunas, Double valor) {
         matriz = new ArrayList<>();
         if (linhas < 1) {
@@ -23,7 +23,7 @@ public class Matriz {
         } else if (colunas < 1) {
             throw new UnsupportedOperationException("Matriz com menos que uma coluna");
         } else {
-
+            
             for (int i = 0; i < linhas; i++) {
                 ArrayList<Double> coluna = new ArrayList<>();
                 for (int j = 0; j < colunas; j++) {
@@ -33,7 +33,7 @@ public class Matriz {
             }
         }
     }
-
+    
     public void imprimeMatriz() {
         String str = "";
         for (int i = 0; i < matriz.size(); i++) {
@@ -46,11 +46,11 @@ public class Matriz {
             System.out.println(str);
         }
     }
-
+    
     public int getLinhas() {
         return matriz.size();
     }
-
+    
     public void addLinha(Double valor) {
         ArrayList<Double> coluna = new ArrayList<>();
         for (int j = 0; j < matriz.get(0).size(); j++) {
@@ -58,7 +58,7 @@ public class Matriz {
         }
         matriz.add(coluna);
     }
-
+    
     public void remLinha(int linha) {
         linha--;
         if (linha < 0 || linha > matriz.get(0).size()) {
@@ -67,20 +67,20 @@ public class Matriz {
             matriz.remove(linha);
         }
     }
-
+    
     public int getColunas() {
         return matriz.get(0).size();
     }
-
+    
     public void addColuna(Double valor) {
         for (int i = 0; i < matriz.size(); i++) {
             matriz.get(i).add(valor);
         }
     }
-
+    
     public void remColuna(int coluna) {
         coluna--;
-        if (coluna < 0 || coluna > matriz.size()) {
+        if (coluna < 0 || coluna > matriz.get(0).size()) {
             throw new UnsupportedOperationException("Exclusão de coluna fora do tamanho da matriz");
         } else {
             for (int i = 0; i < matriz.size(); i++) {
@@ -88,11 +88,11 @@ public class Matriz {
             }
         }
     }
-
+    
     public String getDimension() {
         return matriz.size() + " x " + matriz.get(0).size();
     }
-
+    
     public void setValor(int i, int j, double valor) {
         if (i < 1 || i > matriz.size()) {
             throw new UnsupportedOperationException("Acesso de linha fora do tamanho da matriz");
@@ -102,7 +102,7 @@ public class Matriz {
             matriz.get(i - 1).set(j - 1, valor);
         }
     }
-
+    
     public double getValor(int i, int j) {
         if (i < 1 || i > matriz.size()) {
             throw new UnsupportedOperationException("Acesso de linha fora do tamanho da matriz");
